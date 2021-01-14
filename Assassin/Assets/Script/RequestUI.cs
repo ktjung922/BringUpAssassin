@@ -3,14 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RequestUI : MonoBehaviour
+public class RequestUI : MovingUI
 {
-    [SerializeField]
-    private Animator anim;
-    [SerializeField]
-    private GameObject Background;
-
-    private bool isOpen = false;
     private bool haveQuest = false;
 
 
@@ -32,7 +26,7 @@ public class RequestUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        base.Start();
         questUI = GameObject.Find("QuestUI").GetComponent<QuestUI>();
         UpdateQuest();
     }
@@ -40,13 +34,6 @@ public class RequestUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W)) {
-            UpdateQuest();
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ResetQuest();
-        }
     }
     public void UpdateQuest()
     {
@@ -57,7 +44,6 @@ public class RequestUI : MonoBehaviour
             imgTemp.transform.GetComponent<QuestTemp>().setText(SettingQuest());
             QuestList.Add(imgTemp);
         }
-        
     }
     private Quest SettingQuest() {
         Quest questTemp = new Quest();
@@ -94,7 +80,7 @@ public class RequestUI : MonoBehaviour
         haveQuest = !haveQuest;
     }
 
-    public void OnClickButtonUI(int _n)
+    public override void OnClickButtonUI(int _n)
     {
         if (haveQuest)
         {
@@ -118,6 +104,10 @@ public class RequestUI : MonoBehaviour
                 Background.SetActive(true);
             }
             isOpen = !isOpen;
+            if (anotherMovingUI.getIsOpen() && _n != 2)
+            {
+                anotherMovingUI.OnClickButtonUI(2);
+            }
         }
     }
 }
