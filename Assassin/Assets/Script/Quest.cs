@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Quest", menuName = "New Quest/quest")]
+[CreateAssetMenu(fileName = "New Quest", menuName = "New Menu/quest")]
 public class Quest : ScriptableObject
 {
     public enum QuestGrade { 

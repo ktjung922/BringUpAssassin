@@ -18,12 +18,25 @@ public class SceneController: MonoBehaviour
     }
     public void Btn_NewStart() {
         SceneManager.LoadScene("GameScene");
+        Invoke("Doit", 0.8f);
+    }
+    public void Doit() {
+        Debug.Log("Do it");
+        SLManager.Instance.getComponents();
+    }
+    public void LoadData() {
+        SLManager.Instance._load();
+    }
+    public void Btn_LoadStart()
+    {
+        SceneManager.LoadScene("GameScene");
+        Invoke("Doit", 0.8f);
+        Invoke("LoadData",0.9f);
     }
     public void Btn_Return()
     {
         SceneManager.LoadScene("SampleScene");
     }
-    public void Btn_LoadStart() { }
 
     public void Btn_Quit() {
 #if UNITY_EDITOR

@@ -25,9 +25,12 @@ public class SetButtonSceneController : MonoBehaviour
         {
             Btn.onClick.AddListener(SceneController.Instance.Btn_Return);
         }
-        else if (_str == "Quit") 
+        else if (_str == "Quit")
         {
             Btn.onClick.AddListener(SceneController.Instance.Btn_Quit);
+        }
+        else if (_str == "LoadStart") {
+            Btn.onClick.AddListener(SceneController.Instance.Btn_LoadStart);
         }
     }
 }

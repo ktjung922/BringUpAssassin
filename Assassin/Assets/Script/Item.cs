@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+[CreateAssetMenu(fileName = "New Item", menuName = "New Menu/item", order =2)]
+public class Item : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum eItemType { 
+        Armor, Weapon, Coat, Scope, Pill
+    }
+    public enum eItemEffectState
     {
-        
+        Health, Pow, Dex, Int
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string sItemName;
+    public eItemType ItemType;
+    public eItemEffectState EffectState;
+    public float fEffectCount;
+    public float fBuyGold;
 }

@@ -15,8 +15,8 @@ public class ButtonInteractableChange : MonoBehaviour
         button = GetComponent<Button>();
     }
 
-    public void OnClickButtonInteratableChange() {
-        button.interactable = !button.interactable;
+    public void OnClickButtonInteratableChange(bool _b) {
+        button.interactable = _b;
         setChageAlpha(button.interactable);
     }
     private void setChageAlpha(bool isInteractable) {

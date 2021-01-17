@@ -10,21 +10,31 @@ public class KillUI : MonoBehaviour
     private PlayerState playerState;
 
     private float demageHPAmont;
+    private string str1;
+    private string str2;
+    private int nGold;
     public void OnClickKillUI() {
+        Notification.SettingNotification(StartKill, "암살을 시작하겠습니까?");
+    }
+    public void StartKill() {
         bool success = false;
         demageHPAmont = 0f;
         success = OneKillFunction(questUI.quest.scTargetState);
-        if (!success) {
+        if (!success)
+        {
             success = FightFunction(questUI.quest.scTargetState);
         }
 
         if (success)
         {
-            Debug.Log("의뢰 성공");
             GetRewordFunction();
+            playerState.StateUpgrade(Random.Range(0, 4), questUI.quest.scClientState.fReputation);
+            Advice.SettingAdvice("어제 밤 암살을 시도했습니다.\n" + str1 + "\n<color=green>" + str2 + "</color>을 했습니다.\n의뢰인이 암살에 만족한 만큼 추가금을 주었습니다." +
+                "\n획득한 골드: <color=green>" + nGold + "</color>");
         }
-        else {
-            Debug.Log("사망");
+        else
+        {
+            Advice.SettingAdvice("사망했습니다.");
         }
         questUI.request.OnClickButtonUI(1);
     }
@@ -44,7 +54,6 @@ public class KillUI : MonoBehaviour
             else {
                 fPlayerHP -= fEnermyPow;
             }
-            Debug.Log("싸움" + fPlayerHP + " " + fEnermyHP);
         }
         if (fPlayerHP < 0f) {
             fPlayerHP = 0f;
@@ -54,11 +63,9 @@ public class KillUI : MonoBehaviour
 
         if (fPlayerHP > 0)
         {
-            Debug.Log("전투 승리");
             return true;
         }
         else {
-            Debug.Log("전투 패배");
             return false;
         }
     }
@@ -66,11 +73,11 @@ public class KillUI : MonoBehaviour
         float fTemp = playerState.GetDex() - _target.fDex;
         if (fTemp > Random.Range(0, 300))
         {
-            Debug.Log("암살 성공");
+            str1 = "모습을 들키지 않고 한방에 ";
             return true;
         }
         else {
-            Debug.Log("전투");
+            str1 = "비록 모습은 들켰지만 전투 끝에 ";
             return false;
         }
     }
@@ -78,23 +85,25 @@ public class KillUI : MonoBehaviour
         float DemagePercentage = demageHPAmont / playerState.GetMaxHP();
         if (DemagePercentage == 0)
         {
-            Debug.Log("환상적인 암살 성공");
-            playerState.SetGold((int)(questUI.quest.fQuestGold * 1.5f));
+            str2 = "환상적인 암살";
+            nGold = (int)(questUI.quest.fQuestGold * 2f);
         }
         else if (DemagePercentage < 0.2)
         {
-            Debug.Log("괜찮은 암살 성공");
-            playerState.SetGold((int)(questUI.quest.fQuestGold * (1.4f - DemagePercentage)));
+            str2 = "괜찮은 암살";
+            nGold = (int)(questUI.quest.fQuestGold * (1f + 0.7f * (1f - DemagePercentage)));
         }
         else if (DemagePercentage < 0.5)
         {
-            Debug.Log("평범한 암살 성공");
-            playerState.SetGold((int)(questUI.quest.fQuestGold * (1.2f - DemagePercentage)));
+            str2 = "평범한 암살";
+            nGold = (int)(questUI.quest.fQuestGold * (1f + 0.5f * (1f - DemagePercentage)));
         }
         else 
         {
-            Debug.Log("최악의 암살 성공");
-            playerState.SetGold((int)(questUI.quest.fQuestGold * (1.0f - DemagePercentage)));
+            str2 = "최악의 암살";
+            nGold = (int)(questUI.quest.fQuestGold * (1f + 0.3f * (1f - DemagePercentage)));
         }
+        playerState.SetGold(nGold);
+
     }
 }

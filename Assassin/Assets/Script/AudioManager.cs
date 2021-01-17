@@ -36,7 +36,10 @@ public class AudioManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SliderVolume();
+        if (slider != null)
+        {
+            SliderVolume();
+        }
     }
     public void SliderVolume()
     {

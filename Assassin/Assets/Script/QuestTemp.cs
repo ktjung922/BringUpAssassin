@@ -34,6 +34,9 @@ public class QuestTemp : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Notification.SettingNotification(OnClickNotification, "\"" + quest.sQuestName + "\" 퀘스트를 받겠습니까?");
+    }
+    public void OnClickNotification() {
         questui.SettingUIAll(quest);
         questui.OnClickButtonQuestTempUI();
     }

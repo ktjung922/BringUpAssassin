@@ -32,6 +32,8 @@ public class QuestUI : MonoBehaviour
     private ButtonInteractableChange[] listButtonInteractable;
     [SerializeField]
     private ButtonNameChange buttonNameChage;
+    [SerializeField]
+    private CollectUI collectUI;
     
     void Start()
     {
@@ -41,6 +43,30 @@ public class QuestUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+    public void LoadDataQuest(Quest quest) {
+        this.quest = quest;
+        SettingUIAll(quest);
+    }
+    public void LoadData(bool _b) {
+        if (_b)
+        {
+            goHelpUI.SetActive(false);
+            buttonNameChage.ChageText(true);
+            for (int i = 0; i < listButtonInteractable.Length; i++)
+            {
+                listButtonInteractable[i].OnClickButtonInteratableChange(_b);
+            }
+        }
+        else {
+            goHelpUI.SetActive(true);
+            buttonNameChage.ChageText(false);
+            collectUI.resetTable();
+            for (int i = 0; i < listButtonInteractable.Length; i++)
+            {
+                listButtonInteractable[i].OnClickButtonInteratableChange(_b);
+            }
+        }
     }
 
     public void SettingUIAll(Quest _quest) {
@@ -112,23 +138,23 @@ public class QuestUI : MonoBehaviour
                 break;
         }
         return fTemp;
-
     }
     public void OnClickButtonQuestTempUI() {
         request.OnClickButtonUI(1);
-        request.ChageHaveQuest();
+        request.ChangeHaveQuest(true);
         goHelpUI.SetActive(false);
         buttonNameChage.ChageText(true);
         for (int i = 0; i < listButtonInteractable.Length; i++) {
-            listButtonInteractable[i].OnClickButtonInteratableChange();
+            listButtonInteractable[i].OnClickButtonInteratableChange(true);
         }
     }
     public void OnClickButtonRequestUI() {
         goHelpUI.SetActive(true);
         buttonNameChage.ChageText(false);
+        collectUI.resetTable();
         for (int i = 0; i < listButtonInteractable.Length; i++)
         {
-            listButtonInteractable[i].OnClickButtonInteratableChange();
+            listButtonInteractable[i].OnClickButtonInteratableChange(false);
         }
     }
 
