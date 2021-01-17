@@ -868,4 +868,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
   - Assets/Scenes/GameScene.unity
-  playerPath: C:/Users/Chamdu/Desktop/unity/Build/AssassinVer1.1/Assassin.exe
+  playerPath: C:/Users/Chamdu/Desktop/unity/Build/AssassinVer1.2/Assassin.exe
