@@ -11,6 +11,8 @@ public class AudioManager : MonoBehaviour
     private Slider slider;
     [SerializeField]
     private AudioSource audioBack;
+    [SerializeField]
+    private Toggle toggle;
 
     private float fBackgroundVolume = 1f;
 
@@ -40,6 +42,9 @@ public class AudioManager : MonoBehaviour
         {
             SliderVolume();
         }
+        if (toggle != null) {
+            MuteCheck();
+        }
     }
     public void SliderVolume()
     {
@@ -49,5 +54,11 @@ public class AudioManager : MonoBehaviour
     }
     public void setSlider(Slider slider) {
         this.slider = slider;
+    }
+    public void SetToggle(Toggle toggle) {
+        this.toggle = toggle;
+    }
+    public void MuteCheck() {
+        audioBack.mute = toggle.isOn;
     }
 }
