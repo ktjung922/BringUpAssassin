@@ -2997,6 +2997,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 421936247}
+  toggle: {fileID: 0}
 --- !u!1 &447237009
 GameObject:
   m_ObjectHideFlags: 0
@@ -10495,6 +10496,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1511154771}
   - component: {fileID: 1511154769}
+  - component: {fileID: 1511154770}
   m_Layer: 0
   m_Name: Camera_CanvasMenu
   m_TagString: Untagged
@@ -10511,7 +10513,7 @@ Camera:
   m_GameObject: {fileID: 1511154768}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 4
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -10545,6 +10547,19 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1511154770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1511154768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c5d2fcf55d85147aa3cd7f81abbdda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_objBackScissor: {fileID: 3838486245585928232, guid: b42572a564e798048b96545b718f5b15, type: 3}
 --- !u!4 &1511154771
 Transform:
   m_ObjectHideFlags: 0
@@ -10831,7 +10846,7 @@ Camera:
   m_GameObject: {fileID: 1591592705}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -11484,8 +11499,8 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -13187,8 +13202,8 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -13385,7 +13400,7 @@ Camera:
   m_GameObject: {fileID: 2137953576}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 4
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
